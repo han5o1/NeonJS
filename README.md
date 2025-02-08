@@ -67,7 +67,7 @@
 ## Installation
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your_username/NeonJS.git
+   git clone https://github.com/han5o1/NeonJS.git
    cd NeonJS
    ```
 2. **Install Dependencies:**
