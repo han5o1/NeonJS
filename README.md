@@ -391,4 +391,4 @@ NeonJS is licensed under the MIT License.
 
 ---
 
- completes the NeonJS Wiki documentation in one Markdown file, covering installation, usage, API reference with examples, YAML configuration, plugin development, and contributing guidelines.
+ 
