@@ -1,0 +1,41 @@
+routes:
+  - method: GET
+    path: /public
+    response:
+      type: json
+      data:
+        message: "This is a public route"
+        
+  - method: GET
+    path: /secure
+    authRequired: true
+    response:
+      type: json
+      data:
+        message: "Secure route accessed"
+        
+  - method: POST
+    path: /login
+    response:
+      import:
+        module: "./handlers/loginHandler.js"
+        function: "loginHandler"
+
+websockets:
+  - path: /ws
+    import:
+      module: "./handlers/wsHandler.js"
+      function: "wsHandler"
+
+plugins:
+  - import:
+      module: "./plugins/samplePlugin.js"
+      function: "initPlugin"
+    options:
+      pluginOption1: "value1"
+      pluginOption2: "value2"
+  - import:
+      module: "./plugins/shoppingMallPlugin.js"
+      function: "initShoppingMall"
+    options:
+      currency: "USD"

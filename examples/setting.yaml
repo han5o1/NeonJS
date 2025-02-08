@@ -1,0 +1,81 @@
+routes:
+  - method: GET
+    path: /public
+    response:
+      type: json
+      data:
+        message: "This is a public route"
+        
+  - method: GET
+    path: /secure
+    authRequired: true
+    response:
+      type: json
+      data:
+        message: "Secure route accessed"
+        
+  - method: POST
+    path: /login
+    response:
+      import:
+        module: "./handlers/loginHandler.js"
+        function: "loginHandler"
+
+websockets:
+  - path: /ws
+    import:
+      module: "./handlers/wsHandler.js"
+      function: "wsHandler"
+
+databases:
+  - name: sqliteDB
+    type: sqlite
+    connection: "./data/database.sqlite"
+    migrations:
+      - version: 1
+        up: |
+          CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT);
+        down: |
+          DROP TABLE IF EXISTS users;
+          
+  - name: mySQLDB
+    type: mysql
+    connection:
+      host: "localhost"
+      user: "root"
+      password: "password"
+      database: "testdb"
+    migrations:
+      - version: 1
+        up: |
+          CREATE TABLE IF NOT EXISTS products (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255));
+        down: |
+          DROP TABLE IF EXISTS products;
+          
+  - name: mongoDB
+    type: mongodb
+    connection:
+      uri: "mongodb://localhost:27017"
+      dbName: "testdb"
+      options: {}
+    migrations:
+      - version: 1
+        up: |
+          if (!db.listCollections({ name: "orders" }).hasNext()) {
+            db.createCollection("orders");
+          }
+        down: |
+          db.collection("orders").drop();
+
+plugins:
+  - import:
+      module: "./plugins/samplePlugin.js"
+      function: "initPlugin"
+    options:
+      pluginOption1: "value1"
+      pluginOption2: "value2"
+  - import:
+      module: "./plugins/shoppingMallPlugin.js"
+      function: "initShoppingMall"
+    options:
+      currency: "USD"

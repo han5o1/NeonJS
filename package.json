@@ -1,0 +1,21 @@
+{
+    "name": "neonjs",
+    "version": "1.0.0",
+    "description": "NeonJS: A lightweight, component-based backend framework with robust security, built-in authentication, multi-database migration support, plugin functionality, and enhanced security features.",
+    "main": "index.js",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "ws": "^8.13.0",
+      "js-yaml": "^4.1.0",
+      "helmet": "^6.0.0",
+      "jsonwebtoken": "^9.0.0",
+      "dotenv": "^16.0.3",
+      "sqlite3": "^5.1.6",
+      "mysql2": "^3.2.0",
+      "mariadb": "^3.0.0",
+      "mongodb": "^4.12.1"
+    }
+  }
+  
