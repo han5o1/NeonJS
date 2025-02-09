@@ -1,6 +1,6 @@
 {
     "name": "neonjs",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "description": "NeonJS: A lightweight, component-based backend framework with robust security, built-in authentication, multi-database migration support, plugin functionality, and enhanced security features.",
     "main": "index.js",
     "scripts": {
